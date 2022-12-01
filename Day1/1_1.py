@@ -1,24 +1,8 @@
 puzzle = 2
 
-with open("input.txt", "r") as f:
-    lines = f.readlines()
+if puzzle == 1:
+    print(max([sum([int(x) for x in y]) for y in [i.split() for i in ' '.join(open("input.txt",'r').readlines()).split('\n')]]))
 
-    elves = []
-    res = 0
-    for line in lines:
-        if line != '\n':
-            res+=int(line)
-        else:
-            elves.append(res)
-            res = 0
-
-    if puzzle == 1:
-        print(max(elves))
-
-    if puzzle == 2:
-        total = 0
-        for _ in range(3):
-            total += max(elves)
-            elves.remove(max(elves))
-        print(total)
+if puzzle == 2:
+    print(sum(sorted([sum([int(x) for x in y]) for y in [i.split() for i in ' '.join(open("input.txt",'r').readlines()).split('\n')]])[-3:]))
         
